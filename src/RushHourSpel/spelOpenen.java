@@ -37,6 +37,7 @@ public class SpelOpenen extends JFrame implements ActionListener {
 		
 		highScoresKnop = new JButton("Highscores");
 		highScoresKnop.setBounds(300, 300, 200 ,50);
+		highScoresKnop.addActionListener(this);
 		
 		exitKnop = new JButton("Exit");
 		exitKnop.setBounds(300, 400, 200 ,50);
@@ -61,6 +62,12 @@ public class SpelOpenen extends JFrame implements ActionListener {
 			new LevelKiezen();
 		}
 		
+		if(e.getSource () == highScoresKnop )
+			
+		{
+			new HighscoreOpenen();
+		}
+
 		if(e.getSource () == exitKnop )
 			
 		{
