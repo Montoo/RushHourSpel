@@ -4,8 +4,10 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class LevelKiezen extends JFrame implements ActionListener {
@@ -23,11 +25,10 @@ public class LevelKiezen extends JFrame implements ActionListener {
 	{
 		
 		this.setSize(800, 800);
-		this.setTitle("Level Kiezen");
+		this.setTitle("Rushhour");
 		this.setLocationRelativeTo(null);						// Frame aanmaken
 		this.setDefaultCloseOperation(JFrame. EXIT_ON_CLOSE);
 		this.setVisible(true);
-		
 		
 		JPanel levelKiezenPanel = new JPanel();
 		levelKiezenPanel.setBackground(Color.GREEN);			// Panel aanmaken
@@ -35,24 +36,25 @@ public class LevelKiezen extends JFrame implements ActionListener {
 		
 		this.add(levelKiezenPanel);
 		
+		level1 = new JButton("Level 1");
+		level2 = new JButton("Level 2");
+		level3 = new JButton("Level 3");
+		level4 = new JButton("Level 4");						// Knoppen en hun eigenschappen
+		level5 = new JButton("Level 5");
+		level6 = new JButton("Level 6");
+		spelLadenKnop = new JButton ("Spel Laden");
+		levelBack = new JButton("Terug");
 		
-		level1 = new JButton("LEVEL 1");
-		level2 = new JButton("LEVEL 2");
-		level3 = new JButton("LEVEL 3");
-		level4 = new JButton("LEVEL 4");						// Knoppen en hun eigenschappen
-		level5 = new JButton("LEVEL 5");
-		level6 = new JButton("LEVEL 6");
-		spelLadenKnop = new JButton ("SPEL LADEN");
-		levelBack = new JButton("TERUG");
+		level1.setBounds(150, 150, 200, 50);
+		level2.setBounds(450, 150, 200, 50);
+		level3.setBounds(150, 250, 200, 50);
+		level4.setBounds(450, 250, 200, 50);
+		level5.setBounds(150, 350, 200, 50);
+		level6.setBounds(450, 350, 200, 50);
+		spelLadenKnop.setBounds(450, 500, 200, 50);
+		levelBack.setBounds(150, 500, 200, 50);
 		
-		level1.setBounds(100, 50, 200, 70);
-		level2.setBounds(400, 50, 200, 70);
-		level3.setBounds(100, 150, 200, 70);
-		level4.setBounds(400, 150, 200, 70);
-		level5.setBounds(100, 250, 200, 70);
-		level6.setBounds(400, 250, 200, 70);
-		spelLadenKnop.setBounds(400, 400, 200, 70);
-		levelBack.setBounds(100, 400, 200, 70);
+		level1.addActionListener(this);
 		
 		levelKiezenPanel.add(level1);
 		levelKiezenPanel.add(level2);
@@ -64,6 +66,8 @@ public class LevelKiezen extends JFrame implements ActionListener {
 		levelKiezenPanel.add(levelBack);
 		
 		levelBack.addActionListener(this);
+		
+
 	}
 
 	@Override
@@ -72,9 +76,16 @@ public class LevelKiezen extends JFrame implements ActionListener {
 		if(e.getSource () == levelBack )
 			
 		{
-			 new SpelOpenen();							//Zorgt ervoor dat je teruggaat naar het Introscherm
+			new SpelOpenen();
+			this.dispose();							//Zorgt ervoor dat je teruggaat naar het Introscherm
 		}
 		
+		if(e.getSource () == level1 )
+			
+		{
+			new Speelbord();
+			this.dispose();							//Zorgt ervoor dat je teruggaat naar level 1 gaat
+		}
 	}
 
 }
